@@ -5,17 +5,17 @@ A simple locator manager wrriten in Swift using Closure-based Delegation.
 ```swift
 LocatorManager.shared.currentPosition(mode: .oneshot) { result in
 
-switch result {
+    switch result {
 
-case .success(let value):
+    case .success(let value):
 
-print("latitude: \(value.latitude) | longitude: \(value.longitude)")
+        print("latitude: \(value.latitude) | longitude: \(value.longitude)")
 
-case .failure(let error):
+    case .failure(let error):
 
-print(error.description)
+        print(error.description)
 
-}
+    }
 
 }
 ```
