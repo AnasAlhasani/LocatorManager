@@ -15,7 +15,7 @@ public final class Locator: NSObject {
     private var updateMode: UpdateMode = .oneshot
     private var locationHandler: LocationHandler?
     
-    private override init() {
+    public override init() {
         super.init()
         locationManager.delegate = self
     }
