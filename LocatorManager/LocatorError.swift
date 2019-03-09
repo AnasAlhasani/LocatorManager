@@ -8,15 +8,17 @@
 
 import Foundation
 
-public enum LocatorError {
+enum LocatorError: Error {
     
-    case locationFail(String)
-    case unauthorized(String)
-    
-    public var description: String {
+    case failed
+    case unauthorized
+}
+
+extension LocatorError: LocalizedError {
+    var errorDescription: String? {
         switch self {
-        case .locationFail(let string): return string
-        case .unauthorized(let string): return string
+        case .failed: return "Sorry,\n We were unable to find your location"
+        case .unauthorized: return "Location Refused,\nThe app is not allowed to retreive your current location"
         }
     }
 }

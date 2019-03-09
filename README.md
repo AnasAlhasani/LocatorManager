@@ -29,7 +29,7 @@ LocatorManager.shared.currentPosition(mode: .oneshot) { result in
 $ gem install cocoapods
 ```
 
-To integrate MagicalAPIClient into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate LocatorManager into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 pod 'LocatorManager', :git => "https://github.com/AnasAlhasani/LocatorManager"

@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public extension CLLocationManager {
+extension CLLocationManager {
     
     enum ServiceStatus {
         case available
@@ -20,11 +20,7 @@ public extension CLLocationManager {
     }
     
     var serviceStatus: ServiceStatus {
-        
-        guard CLLocationManager.locationServicesEnabled() else {
-            return .disabled
-        }
-        
+        guard CLLocationManager.locationServicesEnabled() else { return .disabled }
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             return .notDetermined
@@ -35,6 +31,5 @@ public extension CLLocationManager {
         default:
             return .available
         }
-        
     }
 }

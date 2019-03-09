@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1B35402234415800F59286 /* Locatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B353F2234415800F59286 /* Locatable.swift */; };
+		5D1B35422234418700F59286 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B35412234418700F59286 /* Commons.swift */; };
 		5D2214E6209915210062293E /* LocatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2214E4209915210062293E /* LocatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D2214F1209915510062293E /* LocatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2214ED209915500062293E /* LocatorManager.swift */; };
+		5D2214F1209915510062293E /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2214ED209915500062293E /* Locator.swift */; };
 		5D2214F2209915510062293E /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2214EE209915500062293E /* CLLocationManager.swift */; };
 		5D2214F3209915510062293E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2214EF209915500062293E /* Result.swift */; };
 		5D2214F4209915510062293E /* LocatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2214F0209915510062293E /* LocatorError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D1B353F2234415800F59286 /* Locatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatable.swift; sourceTree = "<group>"; };
+		5D1B35412234418700F59286 /* Commons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		5D2214E1209915210062293E /* LocatorManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocatorManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2214E4209915210062293E /* LocatorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocatorManager.h; sourceTree = "<group>"; };
 		5D2214E5209915210062293E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D2214ED209915500062293E /* LocatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocatorManager.swift; sourceTree = "<group>"; };
+		5D2214ED209915500062293E /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		5D2214EE209915500062293E /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		5D2214EF209915500062293E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5D2214F0209915510062293E /* LocatorError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocatorError.swift; sourceTree = "<group>"; };
@@ -55,10 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				5D2214EC209915260062293E /* Supporting Files */,
+				5D1B353F2234415800F59286 /* Locatable.swift */,
+				5D2214ED209915500062293E /* Locator.swift */,
 				5D2214EE209915500062293E /* CLLocationManager.swift */,
+				5D1B35412234418700F59286 /* Commons.swift */,
 				5D2214F0209915510062293E /* LocatorError.swift */,
 				5D2214EF209915500062293E /* Result.swift */,
-				5D2214ED209915500062293E /* LocatorManager.swift */,
 			);
 			path = LocatorManager;
 			sourceTree = "<group>";
@@ -152,8 +158,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2214F3209915510062293E /* Result.swift in Sources */,
-				5D2214F1209915510062293E /* LocatorManager.swift in Sources */,
+				5D2214F1209915510062293E /* Locator.swift in Sources */,
+				5D1B35402234415800F59286 /* Locatable.swift in Sources */,
 				5D2214F2209915510062293E /* CLLocationManager.swift in Sources */,
+				5D1B35422234418700F59286 /* Commons.swift in Sources */,
 				5D2214F4209915510062293E /* LocatorError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

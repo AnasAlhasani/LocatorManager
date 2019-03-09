@@ -1,5 +1,5 @@
 //
-//  LocatorManager.swift
+//  Locator.swift
 //  LocatorManager
 //
 //  Created by Anas Alhasani on 5/1/18.
@@ -9,21 +9,10 @@
 import Foundation
 import CoreLocation
 
-public class LocatorManager: NSObject {
-    
-    public typealias LocationHandler = (Result<(latitude: Double, longitude: Double)>) -> Void
-    public typealias AuthorizationHandler = (Bool) -> Void
-    
-    public enum UpdateMode {
-        case oneshot
-        case continous
-    }
-    
-    public static let shared = LocatorManager()
+public final class Locator: NSObject {
     
     private let locationManager = CLLocationManager()
     private var updateMode: UpdateMode = .oneshot
-
     private var locationHandler: LocationHandler?
     
     private override init() {
@@ -37,10 +26,9 @@ public class LocatorManager: NSObject {
     
 }
 
-private extension LocatorManager {
+private extension Locator {
     
     func requestLocationAuthorization(completion: @escaping AuthorizationHandler) {
-        
         switch locationManager.serviceStatus {
         case .disabled, .denied, .restricted:
             completion(false)
@@ -50,7 +38,6 @@ private extension LocatorManager {
         default:
             completion(true)
         }
-        
     }
     
     func startUpdatingLocation(completion: @escaping LocationHandler) {
@@ -65,47 +52,32 @@ private extension LocatorManager {
     
 }
 
-public extension LocatorManager {
+extension Locator: Locatable {
     
-    func currentPosition(mode: UpdateMode, completion: @escaping LocationHandler) {
-        
+    public func currentPosition(mode: UpdateMode, completion: @escaping LocationHandler) {
         requestLocationAuthorization { [weak self] isAuthorized in
-            
-            if isAuthorized {
-                self?.updateMode = mode
-                self?.startUpdatingLocation(completion: completion)
-            }else {
-                let errorMessage = "Location Refused,\nThe app is not allowed to retreive your current location"
-                completion(.failure(.unauthorized(errorMessage)))
+            guard isAuthorized else {
+                completion(.failure(LocatorError.unauthorized))
+                return
             }
+            self?.updateMode = mode
+            self?.startUpdatingLocation(completion: completion)
         }
     }
 }
 
-extension LocatorManager: CLLocationManagerDelegate {
+extension Locator: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        let errorMessage = "Sorry,\n We were unable to find your location"
-        locationHandler?(.failure(.locationFail(errorMessage)))
+        locationHandler?(.failure(LocatorError.failed))
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         guard let latestPosition = locations.first else { return }
-        
         let latitude = latestPosition.coordinate.latitude
-        
         let longitude = latestPosition.coordinate.longitude
-        
         locationHandler?(.success((latitude, longitude)))
-        
-        
         guard updateMode == .oneshot else { return }
-        
         stopUpdatingLocation()
-        
     }
 }
-
-
-
